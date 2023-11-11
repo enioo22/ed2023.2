@@ -1,15 +1,17 @@
 def diagonal(matriz):
-
+    matriznula = True
     for linha in matriz:                                        #percorre as linhas da matriz
         if(len(matriz) != len(linha)):                          #caso o numero de linhas seja diferente do numero de colunas daquela linha retorna False
             return False
         
     for linha in range(len(matriz)):                            #percorre coordenadas das linhas da matriz
         for coluna in range(len(matriz[linha])):                #percorre as colunas da linha do 'for' anterior chamados de celula
+            if(linha == coluna and matriz[linha][coluna] != 0:  #verifica se algum dos elementos da diagonal principal são diferentes de 0, para determinar se a matriz é não nula
+                matriznula = False
             if(linha != coluna and matriz[linha][coluna] != 0): #verifica se no par ordenado (linha, coluna) linha != coluna e se o item da matriz[linha][coluna] é diferente de 0
                 return False                                    #caso qualquer elemento fora da diagonal principal seja diferente de 0, retorna False encerrando a função
             
-    return True #caso percorra toda a matriz sem retornar False retorna True
+    return True and not False #caso percorra toda a matriz sem retornar False retorna True
 
 def esparsa(matriz):
     elementos = 0                                   #contagem do total de elementos da matriz
